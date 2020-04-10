@@ -1,14 +1,27 @@
 import React, { useState } from "react"
 import styles from "./login.module.css"
+import axios from "axios"
 
 const LoginForm = () => {
     const [name, setName] = useState("")
+
+    const handleSubmit = async event => {
+        event.preventDefault()
+        const result = await axios({
+            method: "POST",
+            url: "https://tan-cat-7689.twil.io/create-token",
+            data: {
+                identity: name,
+            },
+        })
+        console.log(result);
+    }
 
     return (
         <section className={styles.contact}>
             <h3>Login</h3>
             <div className={styles.center}>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="name">Display Name</label>
                     <input
