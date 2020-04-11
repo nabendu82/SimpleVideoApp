@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import styles from "./login.module.css"
 import axios from "axios"
 
-const LoginForm = () => {
+const LoginForm = ({ storeToken }) => {
     const [name, setName] = useState("")
 
     const handleSubmit = async event => {
@@ -15,6 +15,8 @@ const LoginForm = () => {
             },
         })
         console.log(result);
+        const jwt = result.data;
+        storeToken(jwt);
     }
 
     return (
