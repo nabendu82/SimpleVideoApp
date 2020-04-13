@@ -20,8 +20,15 @@ const Video = ({ token }) => {
                             remoteVidRef.current.appendChild(track.attach())
                         }
                     })
+
+                    participant.on("trackSubscribed", track => {
+                        remoteVidRef.current.appendChild(track.attach())
+                    })
                 }
+
                 result.participants.forEach(addParticipant)
+                result.on("participantConnected", addParticipant)
+
             })
     }, [token])
 
