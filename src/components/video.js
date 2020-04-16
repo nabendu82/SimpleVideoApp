@@ -35,10 +35,11 @@ const Video = ({ token, name }) => {
 
     return (
         <>
-            <h2>Organiser: {name}</h2>
+            <h2>Organiser</h2>
             <div ref={localVidRef} />
             <h2>Remote Participants</h2>
             <div className="remoteVideo" ref={remoteVidRef} />
+            <p>Connected: {name}</p>
         </>
     )
 }
